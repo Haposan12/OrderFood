@@ -1,0 +1,85 @@
+﻿@model PesanMakanan.Models.Pesanan
+
+@{
+    ViewBag.Title = "Pesanan";
+
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+
+<h3 style="text-align:center;margin-top:20px">List Pesanan Anda</h3>
+
+<table class="table table-bordered">
+    <thead class="table-heading">
+        <tr>
+            <th>@Html.DisplayName("Nama Makanan")</th>
+            <th>@Html.DisplayName("Nama Toko")</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in ViewBag.pesanan)
+    {
+    <tr>
+        <td>
+            @if (item.IDMakanan == 1)
+            {
+                <p>Nasi Goreng</p>
+            }
+            else if (item.IDMakanan == 2)
+            {
+                <p>Indomie Kuah</p>
+            }
+            else if (item.IDMakanan == 3)
+            {
+                <p>Mie Kuning</p>
+            }
+            else if (item.IDMakanan == 4)
+            {
+                <p>Jus Buah Naga</p>
+            }
+        </td>
+        
+        <td>
+            @if (item.IDToko == 3)
+            {
+                <p>Mak Robi</p>
+            }
+            else if (item.IDToko == 4)
+            {
+                <p>Mak Atur</p>
+            }
+            else if (item.IDToko == 5)
+            {
+                <p>Mak Sarah</p>
+            }
+            else if (item.IDToko == 6)
+            {
+                <p>Warung Minang</p>
+            }
+            else if (item.IDToko == 7)
+            {
+                <p>Warung Namboru Pojok</p>
+            }
+            else if (item.IDToko == 8)
+            {
+                <p>SBB</p>
+            }
+        </td>
+
+        <td>
+            @if(item.Status == 0)
+            {
+                <p>Belum Dibayar</p>
+            }
+            else {
+                <p>Sudah Dibayar</p>
+            }
+        </td>
+    </tr>
+    }
+</table>

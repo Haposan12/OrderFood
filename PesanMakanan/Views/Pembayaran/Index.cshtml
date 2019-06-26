@@ -1,0 +1,21 @@
+﻿@model PesanMakanan.Models.Pembayaran
+@{
+    ViewBag.Title = "Pembayaran";
+
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<h3 style="text-align:center;margin-top:20px">List Pesanan Anda</h3>
+
+<table class="table table-bordered">
+    <thead class="table-heading">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.IDPesanan)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+        </tr>
+    </thead>
+    
+</table>

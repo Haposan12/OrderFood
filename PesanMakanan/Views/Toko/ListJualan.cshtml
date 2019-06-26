@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "ListJualan";
+
+
+    ViewBag.Title = "Pesanan";
+
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<h2 style="text-align:center;margin-top:30px">Pilih menu kesukaan anda</h2>
+<br /><br />
+
+@foreach (var item in ViewBag.jualan)
+{
+    <div class="col-md-4">
+        <a href="@Url.Action("Pesan","Toko", new {id = item.IDMakanan, toko=ViewBag.toko })">
+            <img src="~/Content/Images/gambar/@item.Gambar" style="width:300px" />
+        </a>
+        <h4 style="">@item.NamaMakanan (Rp.@item.Harga)</h4>
+    </div>
+}
+
+

@@ -1,0 +1,75 @@
+﻿@model PesanMakanan.Models.Pesanan
+@{
+    ViewBag.Title = "Index";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h3 style="text-align:center;margin-top:20px">List Pesanan di Toko Anda</h3>
+
+<table class="table table-bordered">
+    <thead class="table-heading">
+        <tr>
+            <th>@Html.DisplayName("Nama Makanan")</th>
+            <th>@Html.DisplayName("Nama Pembeli")</th>
+            <th>@Html.DisplayName("Jumlah")</th>
+            <th>@Html.DisplayName("Total Harga")</th>
+            <th>@Html.DisplayName("Action")</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in ViewBag.data)
+    {
+        <tr>
+            <td>
+                @if (item.IDMakanan == 1)
+                {
+                    <p>Nasi Goreng</p>
+                }
+                else if (item.IDMakanan == 2)
+                {
+                    <p>Indomie Kuah</p>
+                }
+                else if (item.IDMakanan == 3)
+                {
+                    <p>Mie Kuning</p>
+                }
+                else if (item.IDMakanan == 4)
+                {
+                    <p>Jus Buah Naga</p>
+                }
+            </td>
+            <td>@item.IDUser</td>
+            <td>@item.Jumlah</td>
+            <td>Rp @item.TotalHarga,-</td>
+            <td>
+                @if (item.Status == 0)
+                {
+                    <a href="@Url.Action("Bayar","Penjual", new { id=item.IDPesanan})" class="btn btn-success">Sudah Dibayar</a>
+                }
+                else
+                {
+                    <p>Sudah Dibayar</p>
+                }
+
+            </td>
+        </tr>
+    }
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '') {
+                alertify.success(successMessage);
+            }
+        });
+
+        
+    </script>
+}
+
+

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Pesanan";
+
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<h2 style="text-align:center;margin-top:50px">Temukan Toko Kesukaanmu Disini</h2>
+<br /><br />
+<div>
+
+    @foreach (var item in ViewBag.tokoDetail)
+    {
+        <div class="col-md-4">
+            <a href="@Url.Action("Proses","Toko", new { toko=item.NamaToko})">
+                <img src="~/Content/Images/gambar/@item.Gambar" style="width:300px" />
+            </a>
+            <h4 style="">@item.NamaToko (@item.AlamatToko)</h4>
+
+        </div>
+    }
+</div>

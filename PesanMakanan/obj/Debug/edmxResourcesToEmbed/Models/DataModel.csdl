@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderFoodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Makanan">
+    <Key>
+      <PropertyRef Name="IDMakanan" />
+    </Key>
+    <Property Name="IDMakanan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamaMakanan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipeMakanan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gambar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Harga" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pembayaran">
+    <Key>
+      <PropertyRef Name="IDPembayaran" />
+    </Key>
+    <Property Name="IDPembayaran" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDPesanan" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pesanan">
+    <Key>
+      <PropertyRef Name="IDPesanan" />
+    </Key>
+    <Property Name="IDPesanan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDMakanan" Type="Int32" Nullable="false" />
+    <Property Name="IDToko" Type="Int32" Nullable="false" />
+    <Property Name="IDUser" Type="Int32" Nullable="false" />
+    <Property Name="Jumlah" Type="Int32" Nullable="false" />
+    <Property Name="TotalHarga" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Toko">
+    <Key>
+      <PropertyRef Name="TokoID" />
+    </Key>
+    <Property Name="TokoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamaToko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AlamatToko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gambar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="OrderFoodEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Makanans" EntityType="Self.Makanan" />
+    <EntitySet Name="Pembayarans" EntityType="Self.Pembayaran" />
+    <EntitySet Name="Pesanans" EntityType="Self.Pesanan" />
+    <EntitySet Name="Tokoes" EntityType="Self.Toko" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderFoodModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Makanan">
+    <Key>
+      <PropertyRef Name="IDMakanan" />
+    </Key>
+    <Property Name="IDMakanan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NamaMakanan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TipeMakanan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gambar" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Harga" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pembayaran">
+    <Key>
+      <PropertyRef Name="IDPembayaran" />
+    </Key>
+    <Property Name="IDPembayaran" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDPesanan" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pesanan">
+    <Key>
+      <PropertyRef Name="IDPesanan" />
+    </Key>
+    <Property Name="IDPesanan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDMakanan" Type="int" Nullable="false" />
+    <Property Name="IDToko" Type="int" Nullable="false" />
+    <Property Name="IDUser" Type="int" Nullable="false" />
+    <Property Name="Jumlah" Type="int" Nullable="false" />
+    <Property Name="TotalHarga" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Toko">
+    <Key>
+      <PropertyRef Name="TokoID" />
+    </Key>
+    <Property Name="TokoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NamaToko" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AlamatToko" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gambar" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDelete" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="OrderFoodModelStoreContainer">
+    <EntitySet Name="Makanan" EntityType="Self.Makanan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pembayaran" EntityType="Self.Pembayaran" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pesanan" EntityType="Self.Pesanan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Toko" EntityType="Self.Toko" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

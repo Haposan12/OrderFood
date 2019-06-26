@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OrderFoodModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Makanan">
+          <Key>
+            <PropertyRef Name="IDMakanan" />
+          </Key>
+          <Property Name="IDMakanan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamaMakanan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipeMakanan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gambar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Harga" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pembayaran">
+          <Key>
+            <PropertyRef Name="IDPembayaran" />
+          </Key>
+          <Property Name="IDPembayaran" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPesanan" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pesanan">
+          <Key>
+            <PropertyRef Name="IDPesanan" />
+          </Key>
+          <Property Name="IDPesanan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMakanan" Type="int" Nullable="false" />
+          <Property Name="IDToko" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="Jumlah" Type="int" Nullable="false" />
+          <Property Name="TotalHarga" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Toko">
+          <Key>
+            <PropertyRef Name="TokoID" />
+          </Key>
+          <Property Name="TokoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamaToko" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AlamatToko" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gambar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDelete" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="OrderFoodModelStoreContainer">
+          <EntitySet Name="Makanan" EntityType="Self.Makanan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pembayaran" EntityType="Self.Pembayaran" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pesanan" EntityType="Self.Pesanan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Toko" EntityType="Self.Toko" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrderFoodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Makanan">
+          <Key>
+            <PropertyRef Name="IDMakanan" />
+          </Key>
+          <Property Name="IDMakanan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamaMakanan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipeMakanan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gambar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Harga" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pembayaran">
+          <Key>
+            <PropertyRef Name="IDPembayaran" />
+          </Key>
+          <Property Name="IDPembayaran" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPesanan" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pesanan">
+          <Key>
+            <PropertyRef Name="IDPesanan" />
+          </Key>
+          <Property Name="IDPesanan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMakanan" Type="Int32" Nullable="false" />
+          <Property Name="IDToko" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="Jumlah" Type="Int32" Nullable="false" />
+          <Property Name="TotalHarga" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Toko">
+          <Key>
+            <PropertyRef Name="TokoID" />
+          </Key>
+          <Property Name="TokoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamaToko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AlamatToko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gambar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="OrderFoodEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Makanans" EntityType="Self.Makanan" />
+          <EntitySet Name="Pembayarans" EntityType="Self.Pembayaran" />
+          <EntitySet Name="Pesanans" EntityType="Self.Pesanan" />
+          <EntitySet Name="Tokoes" EntityType="Self.Toko" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrderFoodModelStoreContainer" CdmEntityContainer="OrderFoodEntities">
+          <EntitySetMapping Name="Makanans">
+            <EntityTypeMapping TypeName="OrderFoodModel.Makanan">
+              <MappingFragment StoreEntitySet="Makanan">
+                <ScalarProperty Name="IDMakanan" ColumnName="IDMakanan" />
+                <ScalarProperty Name="NamaMakanan" ColumnName="NamaMakanan" />
+                <ScalarProperty Name="TipeMakanan" ColumnName="TipeMakanan" />
+                <ScalarProperty Name="Gambar" ColumnName="Gambar" />
+                <ScalarProperty Name="Harga" ColumnName="Harga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pembayarans">
+            <EntityTypeMapping TypeName="OrderFoodModel.Pembayaran">
+              <MappingFragment StoreEntitySet="Pembayaran">
+                <ScalarProperty Name="IDPembayaran" ColumnName="IDPembayaran" />
+                <ScalarProperty Name="IDPesanan" ColumnName="IDPesanan" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pesanans">
+            <EntityTypeMapping TypeName="OrderFoodModel.Pesanan">
+              <MappingFragment StoreEntitySet="Pesanan">
+                <ScalarProperty Name="IDPesanan" ColumnName="IDPesanan" />
+                <ScalarProperty Name="IDMakanan" ColumnName="IDMakanan" />
+                <ScalarProperty Name="IDToko" ColumnName="IDToko" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+                <ScalarProperty Name="TotalHarga" ColumnName="TotalHarga" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tokoes">
+            <EntityTypeMapping TypeName="OrderFoodModel.Toko">
+              <MappingFragment StoreEntitySet="Toko">
+                <ScalarProperty Name="TokoID" ColumnName="TokoID" />
+                <ScalarProperty Name="NamaToko" ColumnName="NamaToko" />
+                <ScalarProperty Name="AlamatToko" ColumnName="AlamatToko" />
+                <ScalarProperty Name="Gambar" ColumnName="Gambar" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="OrderFoodModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

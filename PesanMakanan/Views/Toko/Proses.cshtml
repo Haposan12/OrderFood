@@ -1,0 +1,29 @@
+﻿@model PesanMakanan.Models.Toko
+@{
+    ViewBag.Title = "Proses";
+
+
+    ViewBag.Title = "Pesanan";
+
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2 style="text-align:center;margin-top:50px;">Selamat datang di toko @ViewBag.namaToko</h2>
+<br /> <br /><br /><br />
+<div class="col-md-6">
+    <h2 style="position:absolute;color:white;margin-left:150px;margin-top:220px">Aneka Makanan</h2>
+    <a href="@Url.Action("ListJualan","Toko", new { tipe="makanan", toko=ViewBag.namaToko})">
+        <img src="~/Content/Images/gambar/makanan.jpg" />
+    </a>
+</div>
+
+<div class="col-md-6">
+    <h2 style="position:absolute;color:white;margin-left:150px;margin-top:220px">Aneka Minuman</h2>
+    <a href="@Url.Action("ListJualan","Toko", new { tipe="minuman", toko=ViewBag.namaToko})">
+        <img src="~/Content/Images/gambar/minuman.jpg" />
+    </a>
+</div>

@@ -1,0 +1,51 @@
+﻿
+@{
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        #toko {
+            position: absolute;
+            left: 35%;
+            top: 30%
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="toko">
+        <h1>Temukan Toko Favoritmu </h1>
+        <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Di Sekitarmu</h1>
+        <br />
+        <button onclick="myFunction()" style="margin-left:150px">Klik disini</button>
+    </div>
+
+</body>
+</html>
+
+@section scripts{
+    <script>
+        function myFunction() {
+            window.location.href = "Toko/Index";
+        }
+
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '') {
+                alertify.success(successMessage);
+            }
+        });
+    </script>
+
+}
